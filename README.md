@@ -15,3 +15,28 @@
 -->
 
 # cert-template
+
+WordのテンプレートファイルにJSONを使って、文字列を流し込む
+
+## 仕様
+
+Wordファイル内の文字列を、別の文字列で置き換えるので、テンプレートとして使える。
+
+## JSON
+
+```JSON
+[{"Key": "KEY_1",
+"Content": "CONTENT_1"},
+{"Key": "KEY_2",
+"Content": "CONTENT_2"}
+]
+```
+
+KeyとContentの組み合わせの配列。(GoのArray)
+
+KeyをContentで置き換えます。
+
+## 依存
+
+github.com/nguyenthenguyen/docx
+
