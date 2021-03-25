@@ -15,9 +15,27 @@ package output
 
 import (
 	"cert-template/input"
+
+	"github.com/nguyenthenguyen/docx"
 )
 
 func WriteToTemplate(templateFile string, outputFile string, dt input.KVArray) error {
+
+	r, err := docx.ReadDocxFile(templateFile)
+	if err != nil {
+		return err
+	}
+
+	// 入力されたJSONをもとに、KeyをContentで置き換えていく
+	templateDocx := r.Editable()
+	for _, kv := range dt {
+		_ = templateDocx.Replace(kv.Key, kv.Content, -1)
+	}
+
+	err = templateDocx.WriteToFile(outputFile)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
