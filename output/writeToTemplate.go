@@ -15,15 +15,9 @@ package output
 
 import (
 	"cert-template/input"
-	"fmt"
 )
 
-func WriteToTemplate(filename string, dt input.KVArray) error {
-	data, err := input.ReadJSON(filename)
-	if err != nil {
-		panic("Error")
-	}
-	fmt.Println(data)
+func WriteToTemplate(templateFile string, outputFile string, dt input.KVArray) error {
 
 	return nil
 }

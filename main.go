@@ -27,7 +27,7 @@ func main() {
 		panic("Input error")
 	}
 
-	err = output.WriteToTemplate("test.docx", inputData)
+	err = output.WriteToTemplate("test.docx", "test_output.docx", inputData)
 	if err != nil {
 		panic("output error")
 	}
