@@ -19,15 +19,25 @@ package main
 import (
 	"cert-template/input"
 	"cert-template/output"
+	"flag"
 )
 
 func main() {
-	inputData, err := input.ReadJSON("test.json")
+
+	var inputFile string
+	var templateFile string
+	var outputFile string
+	flag.StringVar(&inputFile, "i", "test.json", "入力ファイル(JSON)")
+	flag.StringVar(&templateFile, "t", "test.docx", "テンプレートファイル(docx)")
+	flag.StringVar(&outputFile, "o", "output.docx", "出力ファイル名(docx)")
+	flag.Parse()
+
+	inputData, err := input.ReadJSON(inputFile)
 	if err != nil {
 		panic("Input error")
 	}
 
-	err = output.WriteToTemplate("test.docx", "test_output.docx", inputData)
+	err = output.WriteToTemplate(templateFile, outputFile, inputData)
 	if err != nil {
 		panic("output error")
 	}
