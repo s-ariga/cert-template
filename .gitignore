@@ -20,3 +20,5 @@ vendor/
 # テスト用ファイル
 *.docx
 *.csv
+!test.json
+!test.docx
