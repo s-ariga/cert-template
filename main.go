@@ -27,9 +27,12 @@ func main() {
 	var inputFile string
 	var templateFile string
 	var outputFile string
+	// コマンドラインオプションを追加する
 	flag.StringVar(&inputFile, "i", "test.json", "入力ファイル(JSON)")
 	flag.StringVar(&templateFile, "t", "test.docx", "テンプレートファイル(docx)")
 	flag.StringVar(&outputFile, "o", "output.docx", "出力ファイル名(docx)")
+
+	// オプションの解析
 	flag.Parse()
 
 	inputData, err := input.ReadJSON(inputFile)
